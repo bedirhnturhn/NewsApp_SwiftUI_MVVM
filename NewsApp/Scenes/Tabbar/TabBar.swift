@@ -7,34 +7,6 @@
 
 import SwiftUI
 
-enum MainTabs: CaseIterable {
-    case home
-    case search
-    case profile
-    
-    var title: String {
-        switch self {
-        case .home:
-            return "Home"
-        case .search:
-            return "Search"
-        case .profile:
-            return "Profile"
-        }
-    }
-    
-    var image: String {
-        switch self {
-        case .home:
-            return "home"
-        case .search:
-            return "feed"
-        case .profile:
-            return "account"
-        }
-    }
-}
-
 struct TabBar: View {
     @State var current = "Home"
     @State var activeTab: MainTabs = .home

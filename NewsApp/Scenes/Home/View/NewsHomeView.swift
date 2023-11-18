@@ -31,7 +31,7 @@ struct NewsHomeView: View {
                 ForEach(viewModel.recommendationNews) { article in
                     NewsHomeRowView(article: article)
                 }
-            }.padding()
+            }.padding(10)
         }
         .onAppear {
             viewModel.fetchRecommendationNews()
