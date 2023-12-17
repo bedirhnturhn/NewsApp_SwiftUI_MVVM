@@ -4,7 +4,8 @@ News application which you can read daily news and categorize. Apps architecture
 # TODOS
 - New Network Layer
 - Add Unit Tests
-- Add DB(Firebase) for save news and user interests
+- Improve architecture
+- add more filter and sorting method for news
 
 # Feature
 - SwiftUI
