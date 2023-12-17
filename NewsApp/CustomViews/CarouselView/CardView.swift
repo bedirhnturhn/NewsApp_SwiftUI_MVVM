@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct CardView: View {
     
-    let article: Article
+    let article: ArticleUIModel
     
     var body: some View {
         ZStack {

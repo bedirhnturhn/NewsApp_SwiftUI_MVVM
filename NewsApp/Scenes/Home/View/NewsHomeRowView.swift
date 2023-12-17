@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct NewsHomeRowView: View {
     
-    let article: Article
+    let article: ArticleUIModel
     
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
@@ -22,7 +22,9 @@ struct NewsHomeRowView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(article.title ?? "")
                     .font(.title3)
+                    .foregroundColor(.black)
                     .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
                     .lineLimit(3)
                 HStack(spacing: 4) {
                     Text(article.author ?? "Author")

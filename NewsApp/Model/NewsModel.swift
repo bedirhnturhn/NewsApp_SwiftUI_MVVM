@@ -17,15 +17,7 @@ struct News: Codable {
 }
 
 // MARK: - Article
-struct Article: Codable, Hashable, Identifiable, Equatable {
-    static func == (lhs: Article, rhs: Article) -> Bool {
-        return lhs.id == rhs.id
-    }
-    public func hash(into hasher: inout Hasher) {
-        return hasher.combine(id)
-    }
-    
-    let id = UUID().uuidString
+struct Article: Codable {
     let source: Source?
     let author: String?
     let title: String?
@@ -40,4 +32,18 @@ struct Article: Codable, Hashable, Identifiable, Equatable {
 struct Source: Codable {
     let id: String?
     let name: String?
+}
+
+extension [Article] {
+    func convertToUIModel() -> [ArticleUIModel] {
+        self.map({ ArticleUIModel(
+            source: $0.source,
+            author: $0.author,
+            title: $0.title,
+            description: $0.description,
+            url: $0.url,
+            urlToImage: $0.urlToImage,
+            publishedAt: $0.publishedAt,
+            content: $0.content) })
+    }
 }
