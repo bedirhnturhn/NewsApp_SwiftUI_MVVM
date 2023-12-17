@@ -10,4 +10,5 @@ import Foundation
 enum AppConstants {
     static var apiKey = "565b53ef125c494985797acd7d1cfdf4"
     static var num = 123
+    static var country = "us"
 }
