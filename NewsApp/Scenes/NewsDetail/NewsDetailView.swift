@@ -33,14 +33,21 @@ struct NewsDetailView: View {
                 Button(action: {
                     saved.toggle()
                     article.saved = saved
+                    if saved {
+                        NewsSavingManager.shared.saveNews(article: article)
+                    } else {
+                        NewsSavingManager.shared.removeFromSavingList(article: article)
+                    }
                     // TODO: add saving news action
                 }) {
                     HStack {
-                        Text("SAVE")
-                        Spacer()
                         if saved {
+                            Text("SAVED")
+                            Spacer()
                             Image(systemName: "bookmark.fill")
                         } else {
+                            Text("SAVE")
+                            Spacer()
                             Image(systemName: "bookmark")
                         }
                     }
@@ -70,9 +77,9 @@ struct NewsDetailView: View {
                 .frame(maxWidth: UIScreen.main.bounds.width)
                 .padding([.horizontal, .bottom])
         })
+        .onAppear(perform: {
+            saved = NewsSavingManager.shared.isArticleSaved(article: article)
+        })
     }
 }
-
-#Preview {
-    NewsDetailView(article: .init(source: nil, author: nil, title: "​Elon Musk: Inclusion, diversity and equity are 'propaganda words'", description: "​Elon Musk on Friday evening criticized diversity, equity and inclusion as \"propaganda words\" despite efforts by Tesla to promote such initiatives. The billionaire is chief executive officer and the largest shareholder of Tesla, the electric-vehicle maker whi…", url: nil, urlToImage: "https://static.toiimg.com/thumb/msid-106052706,width-1070,height-580,imgsize-790561,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg", publishedAt: nil, content: nil, saved: false))
-}
+    

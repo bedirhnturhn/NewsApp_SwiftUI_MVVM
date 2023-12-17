@@ -26,8 +26,9 @@ struct TabBar: View {
                     NewsSearchView()
                         .environmentObject(SearchVM())
                         .tag(MainTabs.search)
-                    Text("Account")
+                    AccountView()
                         .tag(MainTabs.profile)
+                        .navigationTitle("Account")
                 }
                 
                 HStack(spacing: 0) {
@@ -45,7 +46,6 @@ struct TabBar: View {
                 .padding(.horizontal, 25)
                 .shadow(color: Color.black.opacity(0.08), radius: 5, x: 5, y: 5)
                 .shadow(color: Color.black.opacity(0.08), radius: 5, x: -5, y: -5)
-//                .isHidden(!showTabView)
             }
         })
     }

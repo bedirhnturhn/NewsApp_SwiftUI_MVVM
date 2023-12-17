@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ArticleUIModel:  Hashable, Identifiable, Equatable {
+class ArticleUIModel: Codable, Hashable, Identifiable, Equatable {
     static func == (lhs: ArticleUIModel, rhs: ArticleUIModel) -> Bool {
         return lhs.id == rhs.id
     }
@@ -15,7 +15,27 @@ struct ArticleUIModel:  Hashable, Identifiable, Equatable {
         return hasher.combine(id)
     }
     
-    let id = UUID().uuidString
+    init(
+        source: Source? = nil,
+        author: String? = nil,
+        title: String? = nil,
+        description: String? = nil,
+        url: String? = nil,
+        urlToImage: String? = nil,
+        publishedAt: String? = nil,
+        content: String? = nil
+    ) {
+        self.source = source
+        self.author = author
+        self.title = title
+        self.description = description
+        self.url = url
+        self.urlToImage = urlToImage
+        self.publishedAt = publishedAt
+        self.content = content
+    }
+    
+    var id = UUID().uuidString
     let source: Source?
     let author: String?
     let title: String?
@@ -24,5 +44,5 @@ struct ArticleUIModel:  Hashable, Identifiable, Equatable {
     let urlToImage: String?
     let publishedAt: String?
     let content: String?
-    @State var saved: Bool = false
+    var saved: Bool = false
 }
