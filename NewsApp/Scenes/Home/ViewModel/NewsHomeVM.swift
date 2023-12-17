@@ -8,9 +8,9 @@
 import Foundation
 
 final class NewsHomeVM: ObservableObject {
-    @Published var breakingNews: [Article] = []
-    @Published var recommendationNews: [Article] = []
-    @Published var offsetRecommendationNews: [Article] = []
+    @Published var breakingNews: [ArticleUIModel] = []
+    @Published var recommendationNews: [ArticleUIModel] = []
+    @Published var offsetRecommendationNews: [ArticleUIModel] = []
     
     init() { }
     
@@ -36,7 +36,7 @@ final class NewsHomeVM: ObservableObject {
                 
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
-                    self.breakingNews = news.articles ?? []
+                    self.breakingNews = news.articles?.convertToUIModel() ?? []
                 }
                 
             }
@@ -68,7 +68,7 @@ final class NewsHomeVM: ObservableObject {
                 
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
-                    self.recommendationNews = news.articles ?? []
+                    self.recommendationNews = news.articles?.convertToUIModel() ?? []
                 }
                 
             }

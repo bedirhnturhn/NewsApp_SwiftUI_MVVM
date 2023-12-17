@@ -10,6 +10,7 @@ import SwiftUI
 struct NewsHomeView: View {
     
     @EnvironmentObject var viewModel: NewsHomeVM
+    @Binding var showTabView: Bool
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -29,7 +30,11 @@ struct NewsHomeView: View {
             .padding(.top)
             VStack(alignment: .center, spacing: 12) {
                 ForEach(viewModel.recommendationNews) { article in
-                    NewsHomeRowView(article: article)
+                    NavigationLink {
+                        NewsDetailView(article: article, saved: article.saved)
+                    } label: {
+                        NewsHomeRowView(article: article)
+                    }
                 }
             }.padding(10)
         }
@@ -38,10 +43,3 @@ struct NewsHomeView: View {
         }
     }
 }
-
-struct NewsHomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewsHomeView()
-    }
-}
-

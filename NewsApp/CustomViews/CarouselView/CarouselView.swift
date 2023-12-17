@@ -22,8 +22,12 @@ struct CarouselView: View {
         VStack {
             TabView(selection: $index) {
                 ForEach(0..<self.newsCount, id: \.self) { index in
-                    CardView(article: viewModel.breakingNews[index])
-                        .padding(.horizontal)
+                    NavigationLink {
+                        NewsDetailView(article: viewModel.breakingNews[index], saved: viewModel.breakingNews[index].saved)
+                    } label: {
+                        CardView(article: viewModel.breakingNews[index])
+                    }
+                    .padding(.horizontal)
                 }
             }
             .frame(height: 200)
