@@ -12,6 +12,7 @@ News application which you can read daily news and categorize. Apps architecture
 - MVVM
 - Custom Views
 - Save News With UserDefaults
+- SPM
 
 # 3rd Party Libraries
 - SDWebImage
